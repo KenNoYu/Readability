@@ -17,17 +17,14 @@ int main(void)
     
     // all three variables required for Coleman-liau index
     int letters = count_letters(text);
-    // plus 1 as stated in the assignment, Assume that a sentence will not start or end with a space, and assume that a sentence will not have multiple spaces in a row.
     int words = count_words(text) + 1;
     int sentences = count_sentences(text);
-    printf("%i %i %i\n", letters, words, sentences);
 
     float L = (float) letters / (float) words * 100;
     float S = (float) sentences / (float) words * 100;
 
     float index = 0.0588 * L - 0.296 * S - 15.8;
     int grade = round(index);
-    printf("%i\n", grade);
     
     if (grade >= 16)
     {
@@ -48,10 +45,8 @@ int count_letters(string text)
 {
     char text_len[strlen(text)];
     int letters = 0;
-    // for every char
     for (int i = 0; i < strlen(text); i++)
     {
-        // if char is a alphabetical, char is a letter
         text_len[i] = text[i];
         if (isalpha(text_len[i]))
         {
@@ -65,11 +60,9 @@ int count_words(string text)
 {
     char text_len[strlen(text)];
     int word_count = 0;
-    // for every char
     for (int i = 0; i < strlen(text); i++)
     {
         text_len[i] = text[i];
-        // checks char for spaces and determines that it is a word
         if (text_len[i] == ' ')
         {
             word_count++;
@@ -82,11 +75,9 @@ int count_sentences(string text)
 {
     char text_len[strlen(text)];
     int sentence_count = 0;
-    // for every char
     for (int i = 0; i < strlen(text); i++)
     {
         text_len[i] = text[i];
-        // check if char == to '.' or '?' or '!' and determines whether if it is a sentence or not
         if (text_len[i] == '.' | text_len[i] == '?' | text_len[i] == '!')
         {
             sentence_count++;
